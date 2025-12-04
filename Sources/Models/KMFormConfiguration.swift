@@ -5,6 +5,7 @@
 //  Created by Abhijeet Ranjan on 16/04/25.
 //
 
+import UIKit
 import Foundation
 
 /// A configuration structure for styling a form's appearance.

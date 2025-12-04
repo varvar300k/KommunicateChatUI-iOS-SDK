@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.10
 import PackageDescription
 
 let package = Package(
@@ -16,20 +16,31 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(name: "KommunicateCore_iOS_SDK", url: "https://github.com/Kommunicate-io/KommunicateCore-iOS-SDK.git", from: "1.3.1"),
-        .package(name: "Kingfisher", url: "https://github.com/onevcat/Kingfisher.git", .exact("7.10.0")),
-        .package(name: "SwipeCellKit", url: "https://github.com/SwipeCellKit/SwipeCellKit.git", from: "2.7.1"),
-        .package(name: "ZendeskChatProvidersSDK", url: "https://github.com/zendesk/chat_providers_sdk_ios",.exact("5.0.0")),
-        .package(name: "iOSDropDown", url: "https://github.com/jriosdev/iOSDropDown.git", .upToNextMajor(from: "0.4.0"))
+        //        .package(
+        //            name: "KommunicateCore_iOS_SDK",
+        //            url: "https://github.com/varvar300k/KommunicateCore-iOS-SDK.git",
+        //            exact: "1.3.1"
+        //        ),
+        .package(url: "https://github.com/varvar300k/KommunicateCore-iOS-SDK.git", exact: "1.3.1"),
+        //        .package(name: "Kingfisher", url: "https://github.com/onevcat/Kingfisher.git", .exact("7.10.0")),
+        .package(url: "https://github.com/onevcat/Kingfisher.git", exact: "7.10.0"),
+        //        .package(name: "SwipeCellKit", url: "https://github.com/SwipeCellKit/SwipeCellKit.git", from: "2.7.1"),
+        .package(url: "https://github.com/SwipeCellKit/SwipeCellKit.git", from: "2.7.1"),
+        //        .package(name: "ZendeskChatProvidersSDK", url: "https://github.com/zendesk/chat_providers_sdk_ios",.exact("5.0.0")),
+        .package(url: "https://github.com/zendesk/chat_providers_sdk_ios", exact:"5.0.0"),
+        //        .package(name: "iOSDropDown", url: "https://github.com/jriosdev/iOSDropDown.git", .upToNextMajor(from: "0.4.0"))
+        .package(url: "https://github.com/jriosdev/iOSDropDown.git", from: "0.4.0")
     ],
     targets: [
         .target(name: "KommunicateChatUI-iOS-SDK",
-                dependencies: ["RichMessageKit",
-                               .product(name: "KommunicateCore_iOS_SDK", package: "KommunicateCore_iOS_SDK"),
-                               "Kingfisher",
-                               "SwipeCellKit",
-                               "ZendeskChatProvidersSDK",
-                               "iOSDropDown"],
+                dependencies: [
+                    "RichMessageKit",
+                    .product(name: "KommunicateCore_iOS_SDK", package: "KommunicateCore-iOS-SDK"),
+                    "Kingfisher",
+                    "SwipeCellKit",
+                    .product(name: "ZendeskChatProvidersSDK", package: "chat_providers_sdk_ios"),
+                    "iOSDropDown"
+                ],
                 path: "Sources",
                 exclude: ["Extras"],
                 linkerSettings: [
